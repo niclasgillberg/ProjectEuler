@@ -122,4 +122,15 @@ problems[3] = function (req, res) {
     answer: answer
   });
 };
+problems[4] = function (req, res) {
+  var answer = 0;
 
+  (function () {
+
+  })();
+
+  res.render('answer', {
+    problem: 4,
+    answer: answer
+  });
+};
