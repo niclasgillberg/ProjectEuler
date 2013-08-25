@@ -127,6 +127,47 @@ problems[4] = function (req, res) {
 
   (function () {
 
+    // 5*4*3 = 60
+    // 5*2*2*3 = 60
+
+    // 6*10 = 60
+    // 6*5*2 = 60
+    // 2*3*5*2 = 60
+
+    // 7*6*5*2 = 420
+    // 7*3*2*5*2 = 420
+    // 5*2*2*3*7*3*2 = 2520
+
+    function findPrimes(limit){
+      var primes = [];
+      for(var i = 2; i <= limit; i++){
+        var isPrime = true;
+        for(var j = 2; j <= Math.sqrt(i); j++){
+          if(i % j == 0){
+            isPrime = false;
+            break;
+          }
+        }
+        if(isPrime)
+          primes.push(i);
+      }
+      return primes;
+    }
+    var limit = 20;
+    var primes = findPrimes(limit);
+    var match = [];
+    var current = 1;
+    var value = current;
+    var i = 2;
+    while(i <= limit){
+      if(value % i == 0){
+        current = value;
+        i++;
+        continue;
+      }
+      value = value + current;
+    }
+    answer = value;
   })();
 
   res.render('answer', {
