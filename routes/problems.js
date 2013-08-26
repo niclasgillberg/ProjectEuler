@@ -251,3 +251,27 @@ problems[7] = function (req, res) {
     answer: answer
   });
 };
+problems[8] = function (req, res) {
+  var answer = (function () {
+    var limit = 1000;
+    var a, b, c;
+    for(var i = 1; i < limit; i++){
+      for(var j = i; j < limit - i; j++){
+        a = i;
+        b = j;
+        c = limit - i - j;
+        if(Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)){
+          return [a, b, c];
+        }
+      }
+    }
+
+  })().reduce(function (total, current) {
+    return total * current;
+  });
+
+  res.render('answer', {
+    problem: 8,
+    answer: answer
+  });
+};
